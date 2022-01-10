@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.sass';
+import React, {useState} from 'react'
 
 function App() {
+
+  const [contador, setContador] = useState(0);
+  const [dangerorsucces ,setdangerorsucces] = useState(['default']); 
+  
+  const aumentar = () => {
+    setContador( (contador + 1) );
+    setdangerorsucces('succes');
+  };
+  const disminuir = () => {
+      setContador( 0 );
+  }; 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="contador-float-top"><p>{contador}</p></div>
+      <h1>Contador:</h1>
+      <p className={dangerorsucces}>{contador}</p>
+      <button onClick={aumentar}  className='btn btn_click' >CLICK ME !!!</button>
+      <button onClick={disminuir} className='btn btn-reset' >RESET</button>
     </div>
   );
 }
